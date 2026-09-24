@@ -248,9 +248,11 @@ export const AdminPage: React.FC = () => {
 
       {/* Admin Tab Navigation */}
       <div className="flex items-center gap-2 border-b border-vault-border pb-3 overflow-x-auto scrollbar-none">
+      <div className="flex items-center gap-2 border-b border-vault-border pb-3 overflow-x-auto scrollbar-none -mx-4 px-4 sm:mx-0 sm:px-0">
         <button
           onClick={() => setActiveTab('create')}
           className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 whitespace-nowrap ${
+          className={`px-3.5 sm:px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 whitespace-nowrap ${
             activeTab === 'create'
               ? 'bg-vault-accent text-vault-darker shadow-md shadow-vault-accent/20'
               : 'bg-vault-card border border-vault-border text-slate-300 hover:text-white'
@@ -635,13 +637,16 @@ export const AdminPage: React.FC = () => {
 
           {/* Global Pause Protocol */}
           <div className={`p-6 rounded-3xl border space-y-4 ${
+          <div className={`p-5 sm:p-6 rounded-3xl border space-y-4 ${
             isPaused
               ? 'bg-red-500/10 border-red-500/40 text-red-300'
               : 'bg-vault-card border-vault-border text-slate-300'
           }`}>
             <div className="flex items-center justify-between">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div className="flex items-center gap-3">
                 <AlertTriangle className={`w-6 h-6 ${isPaused ? 'text-red-400' : 'text-amber-400'}`} />
+                <AlertTriangle className={`w-6 h-6 shrink-0 ${isPaused ? 'text-red-400' : 'text-amber-400'}`} />
                 <div>
                   <h3 className="text-base font-bold text-white">Emergency Protocol Pause</h3>
                   <p className="text-xs text-slate-400">
@@ -656,6 +661,7 @@ export const AdminPage: React.FC = () => {
                 onClick={handleToggleEmergencyPause}
                 disabled={!isPauser}
                 className={`px-5 py-2.5 rounded-xl font-bold text-xs shadow-lg transition-all ${
+                className={`px-5 py-2.5 rounded-xl font-bold text-xs shadow-lg transition-all w-full sm:w-auto ${
                   isPaused
                     ? 'bg-emerald-500 text-vault-darker hover:opacity-90'
                     : 'bg-red-500 text-white hover:opacity-90'
@@ -668,10 +674,12 @@ export const AdminPage: React.FC = () => {
 
           {/* Individual Campaign Lifecycle Controls */}
           <div className="rounded-3xl bg-vault-card border border-vault-border p-6 space-y-4">
+          <div className="rounded-3xl bg-vault-card border border-vault-border p-5 sm:p-6 space-y-4">
             <h3 className="text-base font-bold text-white">Manage Active Campaigns</h3>
             <div className="divide-y divide-vault-border/60">
               {campaigns.map((c) => (
                 <div key={c.campaignId.toString()} className="py-3 flex items-center justify-between text-xs">
+                <div key={c.campaignId.toString()} className="py-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-4 text-xs">
                   <div>
                     <span className="font-bold text-white">#{c.campaignId.toString()} - {c.title}</span>
                     <div className="text-[11px] text-slate-400">
@@ -684,6 +692,7 @@ export const AdminPage: React.FC = () => {
                       <button
                         onClick={() => handleCampaignAction('unpause', c.campaignId)}
                         className="px-3 py-1.5 rounded-lg bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 font-bold hover:bg-emerald-500 hover:text-vault-darker"
+                        className="flex-1 sm:flex-none px-3 py-1.5 rounded-lg bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 font-bold hover:bg-emerald-500 hover:text-vault-darker transition-colors"
                       >
                         Unpause
                       </button>
@@ -691,6 +700,7 @@ export const AdminPage: React.FC = () => {
                       <button
                         onClick={() => handleCampaignAction('pause', c.campaignId)}
                         className="px-3 py-1.5 rounded-lg bg-amber-500/15 border border-amber-500/30 text-amber-400 font-bold hover:bg-amber-500 hover:text-vault-darker"
+                        className="flex-1 sm:flex-none px-3 py-1.5 rounded-lg bg-amber-500/15 border border-amber-500/30 text-amber-400 font-bold hover:bg-amber-500 hover:text-vault-darker transition-colors"
                       >
                         Pause
                       </button>
@@ -700,6 +710,7 @@ export const AdminPage: React.FC = () => {
                       <button
                         onClick={() => handleCampaignAction('cancel', c.campaignId)}
                         className="px-3 py-1.5 rounded-lg bg-red-500/15 border border-red-500/30 text-red-400 font-bold hover:bg-red-500 hover:text-white"
+                        className="flex-1 sm:flex-none px-3 py-1.5 rounded-lg bg-red-500/15 border border-red-500/30 text-red-400 font-bold hover:bg-red-500 hover:text-white transition-colors"
                       >
                         Cancel
                       </button>

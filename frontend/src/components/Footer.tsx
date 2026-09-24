@@ -75,6 +75,7 @@ export const Footer: React.FC = () => {
                   </button>
                 </div>
                 <div className="font-mono text-slate-200 text-[11px] truncate">
+                <div className="font-mono text-slate-200 text-[11px] sm:text-xs break-all select-all">
                   {AIRDROP_VAULT_ADDRESS}
                 </div>
               </div>
@@ -93,6 +94,7 @@ export const Footer: React.FC = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2 rounded-lg bg-vault-dark border border-vault-border hover:border-vault-accent/40 text-slate-400 hover:text-white transition-colors"
+                  className="p-2 rounded-lg bg-vault-dark border border-vault-border hover:border-vault-accent/40 text-slate-400 hover:text-white transition-colors shrink-0"
                   title="View on BohrScan"
                 >
                   <ExternalLink className="w-4 h-4" />
@@ -127,6 +129,7 @@ export const Footer: React.FC = () => {
         </div>
 
         <div className="pt-8 border-t border-vault-border/60 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+        <div className="pt-8 border-t border-vault-border/60 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4 text-center sm:text-left">
           <p>© 2026 AirdropVault. Real On-Chain Reward Campaigns & Conversion Pool.</p>
           <div className="flex items-center gap-4">
             <span className="flex items-center gap-1.5">

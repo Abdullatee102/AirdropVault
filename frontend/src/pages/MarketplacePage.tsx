@@ -107,16 +107,19 @@ export const MarketplacePage: React.FC<MarketplacePageProps> = ({ onSelectCampai
 
       {/* Hero Header Section */}
       <section className="relative overflow-hidden rounded-3xl bg-gradient-to-b from-vault-card via-vault-darker to-vault-dark p-8 sm:p-12 border border-vault-border shadow-2xl">
+      <section className="relative overflow-hidden rounded-3xl bg-gradient-to-b from-vault-card via-vault-darker to-vault-dark p-6 sm:p-10 md:p-12 border border-vault-border shadow-2xl">
         <div className="absolute top-0 right-0 w-96 h-96 bg-vault-accent/10 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20" />
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-vault-purple/10 rounded-full blur-3xl pointer-events-none -ml-20 -mb-20" />
 
         <div className="relative z-10 max-w-3xl">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-vault-accent/10 border border-vault-accent/30 text-vault-accent text-xs font-semibold mb-6">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-vault-accent/10 border border-vault-accent/30 text-vault-accent text-xs font-semibold mb-5 sm:mb-6">
             <Sparkles className="w-3.5 h-3.5" />
             <span>On-Chain Reward Marketplace</span>
           </div>
 
           <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight mb-4">
+          <h1 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight mb-4">
             Discover Verified Campaigns, <br />
             <span className="bg-gradient-to-r from-vault-accent via-cyan-300 to-vault-purple bg-clip-text text-transparent">
               Earn & Convert Real AIR
@@ -124,13 +127,16 @@ export const MarketplacePage: React.FC<MarketplacePageProps> = ({ onSelectCampai
           </h1>
 
           <p className="text-base text-slate-300 leading-relaxed mb-8 max-w-2xl">
+          <p className="text-sm sm:text-base text-slate-300 leading-relaxed mb-6 sm:mb-8 max-w-2xl">
             AirdropVault bridges authorized task campaigns with transparent smart contract accounting. Complete tasks, claim genuine ERC-20 AIR tokens, and convert eligible AIR to native Bohr BOT tokens.
           </p>
 
           <div className="flex flex-wrap gap-4">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
             <button
               onClick={() => onNavigate('convert')}
               className="px-6 py-3 rounded-xl bg-gradient-to-r from-vault-accent to-vault-purple text-vault-darker font-bold text-sm hover:opacity-90 transition-all shadow-lg shadow-vault-accent/20 flex items-center gap-2"
+              className="px-6 py-3 rounded-xl bg-gradient-to-r from-vault-accent to-vault-purple text-vault-darker font-bold text-sm hover:opacity-90 transition-all shadow-lg shadow-vault-accent/20 flex items-center justify-center gap-2 w-full sm:w-auto"
             >
               <span>AIR → BOT Conversion Vault</span>
               <ArrowRight className="w-4 h-4" />
@@ -138,6 +144,7 @@ export const MarketplacePage: React.FC<MarketplacePageProps> = ({ onSelectCampai
             <button
               onClick={() => onNavigate('portfolio')}
               className="px-6 py-3 rounded-xl bg-vault-dark border border-vault-border text-white text-sm font-semibold hover:border-vault-accent/40 transition-colors"
+              className="px-6 py-3 rounded-xl bg-vault-dark border border-vault-border text-white text-sm font-semibold hover:border-vault-accent/40 transition-colors flex items-center justify-center w-full sm:w-auto"
             >
               View My Rewards
             </button>
@@ -146,15 +153,21 @@ export const MarketplacePage: React.FC<MarketplacePageProps> = ({ onSelectCampai
 
         {/* Live Protocol Stats Bar */}
         <div className="mt-12 pt-8 border-t border-vault-border/60 grid grid-cols-2 sm:grid-cols-4 gap-6">
+        <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-vault-border/60 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
           <div className="space-y-1">
             <div className="text-xs text-slate-400 flex items-center gap-1.5 font-medium">
               <Layers className="w-3.5 h-3.5 text-vault-accent" />
               <span>Total Campaigns</span>
+            <div className="text-[11px] sm:text-xs text-slate-400 flex items-center gap-1.5 font-medium">
+              <Layers className="w-3.5 h-3.5 text-vault-accent shrink-0" />
+              <span className="truncate">Total Campaigns</span>
             </div>
             <div className="text-2xl font-bold font-mono text-white">
+            <div className="text-xl sm:text-2xl font-bold font-mono text-white">
               {isStatsLoading ? "..." : totalCampaigns}
             </div>
             <div className="text-[11px] text-emerald-400 font-medium">
+            <div className="text-[10px] sm:text-[11px] text-emerald-400 font-medium">
               {activeCampaigns} Active Now
             </div>
           </div>
@@ -163,11 +176,16 @@ export const MarketplacePage: React.FC<MarketplacePageProps> = ({ onSelectCampai
             <div className="text-xs text-slate-400 flex items-center gap-1.5 font-medium">
               <TrendingUp className="w-3.5 h-3.5 text-emerald-400" />
               <span>Total AIR Claimed</span>
+            <div className="text-[11px] sm:text-xs text-slate-400 flex items-center gap-1.5 font-medium">
+              <TrendingUp className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+              <span className="truncate">Total AIR Claimed</span>
             </div>
             <div className="text-2xl font-bold font-mono text-white">
+            <div className="text-xl sm:text-2xl font-bold font-mono text-white">
               {isStatsLoading ? "..." : totalAirClaimed.toLocaleString()}
             </div>
             <div className="text-[11px] text-slate-400 font-medium">
+            <div className="text-[10px] sm:text-[11px] text-slate-400 font-medium">
               Minted on-claim
             </div>
           </div>
@@ -176,11 +194,16 @@ export const MarketplacePage: React.FC<MarketplacePageProps> = ({ onSelectCampai
             <div className="text-xs text-slate-400 flex items-center gap-1.5 font-medium">
               <Coins className="w-3.5 h-3.5 text-vault-purple" />
               <span>BOT Conversion Pool</span>
+            <div className="text-[11px] sm:text-xs text-slate-400 flex items-center gap-1.5 font-medium">
+              <Coins className="w-3.5 h-3.5 text-vault-purple shrink-0" />
+              <span className="truncate">BOT Conversion Pool</span>
             </div>
             <div className="text-2xl font-bold font-mono text-white">
+            <div className="text-xl sm:text-2xl font-bold font-mono text-white">
               {botPoolFormatted} <span className="text-xs text-emerald-400 font-sans">BOT</span>
             </div>
             <div className="text-[11px] text-slate-400 font-medium">
+            <div className="text-[10px] sm:text-[11px] text-slate-400 font-medium">
               Real Bohr Liquidity
             </div>
           </div>
@@ -189,11 +212,16 @@ export const MarketplacePage: React.FC<MarketplacePageProps> = ({ onSelectCampai
             <div className="text-xs text-slate-400 flex items-center gap-1.5 font-medium">
               <ShieldCheck className="w-3.5 h-3.5 text-cyan-400" />
               <span>Conversion Rate</span>
+            <div className="text-[11px] sm:text-xs text-slate-400 flex items-center gap-1.5 font-medium">
+              <ShieldCheck className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
+              <span className="truncate">Conversion Rate</span>
             </div>
             <div className="text-2xl font-bold font-mono text-white">
+            <div className="text-base sm:text-xl md:text-2xl font-bold font-mono text-white">
               1,000 <span className="text-xs text-vault-accent">AIR</span> → 0.1 <span className="text-xs text-emerald-400">BOT</span>
             </div>
             <div className="text-[11px] text-slate-400 font-medium">
+            <div className="text-[10px] sm:text-[11px] text-slate-400 font-medium">
               Configurable on-chain
             </div>
           </div>
@@ -203,14 +231,17 @@ export const MarketplacePage: React.FC<MarketplacePageProps> = ({ onSelectCampai
       {/* Filter & Search Controls */}
       <section className="space-y-4">
         <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
+        <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-4">
 
           {/* Category Tabs */}
           <div className="flex items-center gap-1.5 overflow-x-auto pb-2 md:pb-0 scrollbar-none">
+          <div className="flex items-center gap-1.5 overflow-x-auto pb-2 lg:pb-0 scrollbar-none -mx-4 px-4 sm:mx-0 sm:px-0">
             {categories.map((cat) => (
               <button
                 key={cat.id}
                 onClick={() => setSelectedCategory(cat.id as any)}
                 className={`px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all ${
+                className={`px-3.5 sm:px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all ${
                   selectedCategory === cat.id
                     ? 'bg-vault-accent text-vault-darker shadow-md shadow-vault-accent/20'
                     : 'bg-vault-card border border-vault-border text-slate-300 hover:text-white hover:border-vault-borderHover'
@@ -223,6 +254,7 @@ export const MarketplacePage: React.FC<MarketplacePageProps> = ({ onSelectCampai
 
           {/* Search & Status Filter */}
           <div className="flex items-center gap-3">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 w-full lg:w-auto">
             <div className="relative flex-1 sm:w-64">
               <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
               <input
@@ -231,6 +263,7 @@ export const MarketplacePage: React.FC<MarketplacePageProps> = ({ onSelectCampai
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search campaigns..."
                 className="w-full pl-10 pr-4 py-2 rounded-xl bg-vault-card border border-vault-border text-xs text-white placeholder-slate-500 focus:outline-none focus:border-vault-accent/50 transition-colors"
+                className="w-full pl-10 pr-4 py-2.5 sm:py-2 rounded-xl bg-vault-card border border-vault-border text-xs text-white placeholder-slate-500 focus:outline-none focus:border-vault-accent/50 transition-colors"
               />
             </div>
 
@@ -245,6 +278,18 @@ export const MarketplacePage: React.FC<MarketplacePageProps> = ({ onSelectCampai
               <option value={CampaignStatus.EXHAUSTED}>Exhausted</option>
               <option value={CampaignStatus.ENDED}>Ended</option>
             </select>
+            <div className="flex items-center gap-2">
+              <select
+                value={selectedStatus}
+                onChange={(e) => setSelectedStatus(e.target.value === 'ALL' ? 'ALL' : Number(e.target.value))}
+                className="flex-1 sm:flex-none px-3 py-2.5 sm:py-2 rounded-xl bg-vault-card border border-vault-border text-xs text-slate-300 focus:outline-none focus:border-vault-accent/50 cursor-pointer"
+              >
+                <option value="ALL">All Statuses</option>
+                <option value={CampaignStatus.ACTIVE}>Active</option>
+                <option value={CampaignStatus.UPCOMING}>Upcoming</option>
+                <option value={CampaignStatus.EXHAUSTED}>Exhausted</option>
+                <option value={CampaignStatus.ENDED}>Ended</option>
+              </select>
 
             <button
               onClick={() => refetchAll()}
@@ -253,6 +298,14 @@ export const MarketplacePage: React.FC<MarketplacePageProps> = ({ onSelectCampai
             >
               <RefreshCw className="w-4 h-4" />
             </button>
+              <button
+                onClick={() => refetchAll()}
+                className="p-2.5 sm:p-2 rounded-xl bg-vault-card border border-vault-border text-slate-400 hover:text-white hover:border-vault-accent/30 transition-colors shrink-0"
+                title="Refresh Campaigns"
+              >
+                <RefreshCw className="w-4 h-4" />
+              </button>
+            </div>
           </div>
         </div>
       </section>

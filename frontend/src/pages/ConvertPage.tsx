@@ -126,8 +126,10 @@ export const ConvertPage: React.FC<ConvertPageProps> = ({ onNavigate }) => {
 
       {/* Protocol Conversion Rate Banner */}
       <div className="p-4 rounded-2xl bg-gradient-to-r from-vault-card to-vault-dark border border-vault-border flex flex-col sm:flex-row items-center justify-between gap-4 text-xs shadow-lg">
+      <div className="p-4 rounded-2xl bg-gradient-to-r from-vault-card to-vault-dark border border-vault-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 text-xs shadow-lg">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-xl bg-vault-accent/15 border border-vault-accent/30 flex items-center justify-center">
+          <div className="w-10 h-10 rounded-xl bg-vault-accent/15 border border-vault-accent/30 flex items-center justify-center shrink-0">
             <Coins className="w-5 h-5 text-vault-accent" />
           </div>
           <div>
@@ -137,6 +139,7 @@ export const ConvertPage: React.FC<ConvertPageProps> = ({ onNavigate }) => {
         </div>
 
         <div className="text-right sm:border-l sm:border-vault-border sm:pl-4">
+        <div className="w-full sm:w-auto text-left sm:text-right border-t sm:border-t-0 sm:border-l border-vault-border pt-2 sm:pt-0 sm:pl-4">
           <span className="text-slate-400 font-medium">Current BOT Liquidity</span>
           <div className="text-sm font-bold text-emerald-400 font-mono">{poolBotFormatted} BOT</div>
         </div>
@@ -144,6 +147,7 @@ export const ConvertPage: React.FC<ConvertPageProps> = ({ onNavigate }) => {
 
       {/* Main Conversion Card */}
       <div className="rounded-3xl bg-vault-card border border-vault-border p-6 sm:p-8 shadow-2xl space-y-6 relative overflow-hidden">
+      <div className="rounded-3xl bg-vault-card border border-vault-border p-5 sm:p-8 shadow-2xl space-y-6 relative overflow-hidden">
 
         {/* Background glow */}
         <div className="absolute top-0 right-0 w-64 h-64 bg-vault-accent/5 rounded-full blur-3xl pointer-events-none" />
@@ -175,8 +179,10 @@ export const ConvertPage: React.FC<ConvertPageProps> = ({ onNavigate }) => {
               placeholder="0.0"
               disabled={isZeroLiquidity || isPaused}
               className="w-full py-4 pl-4 pr-24 rounded-2xl bg-vault-dark border border-vault-border text-lg sm:text-2xl font-mono font-bold text-white placeholder-slate-600 focus:outline-none focus:border-vault-accent/60 transition-colors disabled:opacity-50"
+              className="w-full py-3.5 sm:py-4 pl-3.5 sm:pl-4 pr-20 sm:pr-24 rounded-2xl bg-vault-dark border border-vault-border text-base sm:text-2xl font-mono font-bold text-white placeholder-slate-600 focus:outline-none focus:border-vault-accent/60 transition-colors disabled:opacity-50"
             />
             <div className="absolute right-3.5 top-1/2 -translate-y-1/2 flex items-center gap-2 px-3 py-1.5 rounded-xl bg-vault-card border border-vault-border text-xs font-bold text-vault-accent font-mono">
+            <div className="absolute right-2.5 sm:right-3.5 top-1/2 -translate-y-1/2 flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-xl bg-vault-card border border-vault-border text-xs font-bold text-vault-accent font-mono">
               <Flame className="w-4 h-4 text-vault-accent" />
               <span>AIR</span>
             </div>
@@ -195,6 +201,7 @@ export const ConvertPage: React.FC<ConvertPageProps> = ({ onNavigate }) => {
           <div className="flex items-center justify-between text-xs text-slate-400">
             <span className="font-semibold text-white">You Receive (Native BOT)</span>
             <span>Direct to your connected wallet</span>
+            <span className="hidden sm:inline">Direct to your wallet</span>
           </div>
 
           <div className="relative">
@@ -204,8 +211,10 @@ export const ConvertPage: React.FC<ConvertPageProps> = ({ onNavigate }) => {
               value={botOutput}
               placeholder="0.0"
               className="w-full py-4 pl-4 pr-24 rounded-2xl bg-vault-dark/60 border border-vault-border text-lg sm:text-2xl font-mono font-bold text-emerald-400 placeholder-slate-600 focus:outline-none cursor-default"
+              className="w-full py-3.5 sm:py-4 pl-3.5 sm:pl-4 pr-20 sm:pr-24 rounded-2xl bg-vault-dark/60 border border-vault-border text-base sm:text-2xl font-mono font-bold text-emerald-400 placeholder-slate-600 focus:outline-none cursor-default"
             />
             <div className="absolute right-3.5 top-1/2 -translate-y-1/2 flex items-center gap-2 px-3 py-1.5 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-xs font-bold text-emerald-400 font-mono">
+            <div className="absolute right-2.5 sm:right-3.5 top-1/2 -translate-y-1/2 flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-xs font-bold text-emerald-400 font-mono">
               <Coins className="w-4 h-4" />
               <span>BOT</span>
             </div>

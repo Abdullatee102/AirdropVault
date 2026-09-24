@@ -114,11 +114,13 @@ export const CampaignDetailPage: React.FC<CampaignDetailPageProps> = ({ campaign
 
       {/* Main Campaign Card */}
       <div className="rounded-3xl bg-vault-card border border-vault-border p-6 sm:p-10 shadow-2xl space-y-8">
+      <div className="rounded-3xl bg-vault-card border border-vault-border p-5 sm:p-8 md:p-10 shadow-2xl space-y-6 sm:space-y-8">
 
         {/* Top Header */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-vault-border/60">
           <div className="space-y-2">
             <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center gap-2">
               <CategoryBadge category={campaign.category} />
               <StatusBadge status={campaign.status ?? 1} />
               <span className="text-xs font-mono text-slate-500">ID #{campaign.campaignId.toString()}</span>
@@ -129,10 +131,12 @@ export const CampaignDetailPage: React.FC<CampaignDetailPageProps> = ({ campaign
           </div>
 
           <div className="flex flex-col items-start sm:items-end bg-vault-dark p-4 rounded-2xl border border-vault-border/80">
+          <div className="flex sm:flex-col items-center sm:items-end justify-between bg-vault-dark p-3.5 sm:p-4 rounded-2xl border border-vault-border/80">
             <span className="text-xs text-slate-400 font-medium">Configured Reward</span>
             <div className="flex items-center gap-1.5 mt-0.5">
               <Flame className="w-5 h-5 text-vault-accent" />
               <span className="font-mono text-2xl font-black text-white">{rewardFormatted}</span>
+              <span className="font-mono text-xl sm:text-2xl font-black text-white">{rewardFormatted}</span>
               <span className="text-xs font-bold text-vault-accent">AIR</span>
             </div>
           </div>
@@ -148,27 +152,32 @@ export const CampaignDetailPage: React.FC<CampaignDetailPageProps> = ({ campaign
 
         {/* Economic Parameters Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-5 rounded-2xl bg-vault-dark border border-vault-border/60 text-xs">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 p-4 sm:p-5 rounded-2xl bg-vault-dark border border-vault-border/60 text-xs">
           <div className="space-y-1">
             <span className="text-slate-500">Remaining Allocation</span>
             <div className="font-mono text-sm font-bold text-slate-200">{remainingFormatted} AIR</div>
+            <div className="font-mono text-xs sm:text-sm font-bold text-slate-200">{remainingFormatted} AIR</div>
             <span className="text-[10px] text-slate-500">of {totalAllocFormatted} AIR</span>
           </div>
 
           <div className="space-y-1">
             <span className="text-slate-500">Participants Cap</span>
             <div className="font-mono text-sm font-bold text-slate-200">{currentParts} / {maxParts}</div>
+            <div className="font-mono text-xs sm:text-sm font-bold text-slate-200">{currentParts} / {maxParts}</div>
             <span className="text-[10px] text-emerald-400 font-medium">{progressPct}% Claimed</span>
           </div>
 
           <div className="space-y-1">
             <span className="text-slate-500">Start Time</span>
             <div className="font-mono text-[11px] text-slate-300 truncate">{startDate}</div>
+            <div className="font-mono text-[10px] sm:text-[11px] text-slate-300 truncate">{startDate}</div>
             <span className="text-[10px] text-slate-500">On-Chain Verified</span>
           </div>
 
           <div className="space-y-1">
             <span className="text-slate-500">Claim Deadline</span>
             <div className="font-mono text-[11px] text-slate-300 truncate">{deadlineDate}</div>
+            <div className="font-mono text-[10px] sm:text-[11px] text-slate-300 truncate">{deadlineDate}</div>
             <span className="text-[10px] text-slate-500">Strict Enforcement</span>
           </div>
         </div>
@@ -190,12 +199,16 @@ export const CampaignDetailPage: React.FC<CampaignDetailPageProps> = ({ campaign
         {/* User Eligibility & Claim Status Card */}
         <div className="p-6 rounded-2xl bg-gradient-to-br from-vault-darker to-vault-dark border border-vault-borderHover/30 space-y-5">
           <div className="flex items-center justify-between">
+        <div className="p-4 sm:p-6 rounded-2xl bg-gradient-to-br from-vault-darker to-vault-dark border border-vault-borderHover/30 space-y-4 sm:space-y-5">
+          <div className="flex items-center justify-between gap-2">
             <h3 className="text-sm font-bold text-white flex items-center gap-2">
               <UserCheck className="w-4 h-4 text-vault-accent" />
+              <UserCheck className="w-4 h-4 text-vault-accent shrink-0" />
               <span>Your Participation Status</span>
             </h3>
             {isConnected && (
               <span className="text-xs font-mono text-slate-400 truncate max-w-[150px]">
+              <span className="text-xs font-mono text-slate-400 truncate max-w-[120px] sm:max-w-[200px]">
                 {address}
               </span>
             )}
@@ -326,6 +339,7 @@ export const CampaignDetailPage: React.FC<CampaignDetailPageProps> = ({ campaign
         {/* Creator & Explorer Reference */}
         <div className="pt-4 border-t border-vault-border/60 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-2">
           <span className="font-mono">Creator: {campaign.creator}</span>
+          <span className="font-mono text-[11px] sm:text-xs truncate max-w-full sm:max-w-md">Creator: {campaign.creator}</span>
           <a
             href={`${BOHR_EXPLORER_URL}address/${AIRDROP_VAULT_ADDRESS}`}
             target="_blank"

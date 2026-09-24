@@ -3,6 +3,7 @@ export const BOHR_RPC_URL = import.meta.env.VITE_BOT_RPC_URL || "https://rpc.boh
 export const BOHR_EXPLORER_URL = import.meta.env.VITE_BOT_EXPLORER_URL || "https://scan.bohr.life/";
 export const AIRDROP_VAULT_ADDRESS = (import.meta.env.VITE_AIRDROP_VAULT_CONTRACT_ADDRESS || "0xFeCE26cE87096A449DF46748C45739B541b1f5BC") as `0x${string}`;
 export const REOWN_PROJECT_ID = import.meta.env.VITE_REOWN_PROJECT_ID || "b0ed2f41971704df2800043e6799378c";
+export const APP_URL = import.meta.env.VITE_APP_URL || "https://airdrop-vault-kohl.vercel.app/";
 
 export const CATEGORY_LABELS: Record<number, string> = {
   0: "Daily",

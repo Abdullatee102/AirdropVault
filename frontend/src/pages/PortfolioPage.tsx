@@ -89,14 +89,18 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({ onSelectCampaign, 
           </div>
           <h1 className="text-3xl font-extrabold text-white tracking-tight">Your Rewards & Holdings</h1>
           <p className="text-xs text-slate-400 font-mono mt-1">Connected: {address}</p>
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">Your Rewards & Holdings</h1>
+          <p className="text-xs text-slate-400 font-mono mt-1 truncate max-w-full sm:max-w-md">Connected: {address}</p>
         </div>
 
         <div className="flex items-center gap-3">
           <button
             onClick={addAirToWallet}
             className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-vault-accent/15 border border-vault-accent/40 text-vault-accent text-xs font-bold hover:bg-vault-accent hover:text-vault-darker transition-all"
+            className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-vault-accent/15 border border-vault-accent/40 text-vault-accent text-xs font-bold hover:bg-vault-accent hover:text-vault-darker transition-all w-full sm:w-auto"
           >
             <PlusCircle className="w-4 h-4" />
+            <PlusCircle className="w-4 h-4 shrink-0" />
             <span>{addedToken ? "Added to Wallet!" : "Add AIR to MetaMask"}</span>
           </button>
         </div>
@@ -104,9 +108,11 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({ onSelectCampaign, 
 
       {/* Metrics Cards Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
 
         {/* Current AIR Balance */}
         <div className="p-6 rounded-3xl bg-gradient-to-br from-vault-card to-vault-dark border border-vault-border space-y-3 relative overflow-hidden shadow-xl">
+        <div className="p-5 sm:p-6 rounded-3xl bg-gradient-to-br from-vault-card to-vault-dark border border-vault-border space-y-3 relative overflow-hidden shadow-xl">
           <div className="flex items-center justify-between">
             <span className="text-xs font-semibold text-slate-400">Current AIR Balance</span>
             <div className="p-2 rounded-xl bg-vault-accent/10 text-vault-accent">
@@ -115,12 +121,14 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({ onSelectCampaign, 
           </div>
           <div className="space-y-0.5">
             <div className="text-3xl font-extrabold font-mono text-white">{airBalanceFormatted}</div>
+            <div className="text-2xl sm:text-3xl font-extrabold font-mono text-white truncate">{airBalanceFormatted}</div>
             <div className="text-[11px] text-vault-accent font-semibold">ERC-20 AIR In Wallet</div>
           </div>
         </div>
 
         {/* Total AIR Earned */}
         <div className="p-6 rounded-3xl bg-gradient-to-br from-vault-card to-vault-dark border border-vault-border space-y-3 shadow-xl">
+        <div className="p-5 sm:p-6 rounded-3xl bg-gradient-to-br from-vault-card to-vault-dark border border-vault-border space-y-3 shadow-xl">
           <div className="flex items-center justify-between">
             <span className="text-xs font-semibold text-slate-400">Lifetime AIR Claimed</span>
             <div className="p-2 rounded-xl bg-emerald-500/10 text-emerald-400">
@@ -129,12 +137,14 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({ onSelectCampaign, 
           </div>
           <div className="space-y-0.5">
             <div className="text-3xl font-extrabold font-mono text-white">{totalClaimedFormatted}</div>
+            <div className="text-2xl sm:text-3xl font-extrabold font-mono text-white truncate">{totalClaimedFormatted}</div>
             <div className="text-[11px] text-emerald-400 font-semibold">Earned from Campaigns</div>
           </div>
         </div>
 
         {/* Total AIR Converted */}
         <div className="p-6 rounded-3xl bg-gradient-to-br from-vault-card to-vault-dark border border-vault-border space-y-3 shadow-xl">
+        <div className="p-5 sm:p-6 rounded-3xl bg-gradient-to-br from-vault-card to-vault-dark border border-vault-border space-y-3 shadow-xl">
           <div className="flex items-center justify-between">
             <span className="text-xs font-semibold text-slate-400">Total AIR Converted</span>
             <div className="p-2 rounded-xl bg-vault-purple/10 text-vault-purple">
@@ -143,12 +153,14 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({ onSelectCampaign, 
           </div>
           <div className="space-y-0.5">
             <div className="text-3xl font-extrabold font-mono text-white">{totalConvertedFormatted}</div>
+            <div className="text-2xl sm:text-3xl font-extrabold font-mono text-white truncate">{totalConvertedFormatted}</div>
             <div className="text-[11px] text-slate-400 font-semibold">Burned on Conversion</div>
           </div>
         </div>
 
         {/* Total Native BOT Received */}
         <div className="p-6 rounded-3xl bg-gradient-to-br from-vault-card to-vault-dark border border-vault-border space-y-3 shadow-xl">
+        <div className="p-5 sm:p-6 rounded-3xl bg-gradient-to-br from-vault-card to-vault-dark border border-vault-border space-y-3 shadow-xl">
           <div className="flex items-center justify-between">
             <span className="text-xs font-semibold text-slate-400">Native BOT Received</span>
             <div className="p-2 rounded-xl bg-emerald-500/10 text-emerald-400">
@@ -157,6 +169,7 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({ onSelectCampaign, 
           </div>
           <div className="space-y-0.5">
             <div className="text-3xl font-extrabold font-mono text-white">{totalBotReceivedFormatted}</div>
+            <div className="text-2xl sm:text-3xl font-extrabold font-mono text-white truncate">{totalBotReceivedFormatted}</div>
             <div className="text-[11px] text-emerald-400 font-semibold">Bohr Native Gas Asset</div>
           </div>
         </div>
@@ -164,8 +177,10 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({ onSelectCampaign, 
 
       {/* Convert Call to Action Banner */}
       <div className="p-8 rounded-3xl bg-gradient-to-r from-vault-accent/15 via-vault-darker to-vault-purple/15 border border-vault-accent/30 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-2xl">
+      <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-vault-accent/15 via-vault-darker to-vault-purple/15 border border-vault-accent/30 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-6 shadow-2xl">
         <div className="space-y-2">
           <h3 className="text-xl font-bold text-white">Convert Your AIR into Native BOT</h3>
+          <h3 className="text-lg sm:text-xl font-bold text-white">Convert Your AIR into Native BOT</h3>
           <p className="text-xs text-slate-300 max-w-xl leading-relaxed">
             Eligible AIR can be converted into Bohr Testnet native BOT at the protocol rate of 1,000 AIR → 0.1 BOT. Converted AIR is burned and BOT is transferred directly to your wallet.
           </p>
@@ -174,6 +189,7 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({ onSelectCampaign, 
         <button
           onClick={() => onNavigate('convert')}
           className="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-vault-accent to-vault-purple text-vault-darker font-bold text-xs hover:opacity-90 transition-all flex items-center gap-2 whitespace-nowrap shadow-lg shadow-vault-accent/20"
+          className="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-vault-accent to-vault-purple text-vault-darker font-bold text-xs hover:opacity-90 transition-all flex items-center justify-center gap-2 whitespace-nowrap shadow-lg shadow-vault-accent/20 w-full sm:w-auto"
         >
           <span>Open Conversion Vault</span>
           <Send className="w-4 h-4" />

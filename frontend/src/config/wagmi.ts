@@ -2,6 +2,7 @@ import { defineChain } from 'viem';
 import { WagmiAdapter } from '@reown/appkit-adapter-wagmi';
 import { createAppKit } from '@reown/appkit/react';
 import { BOHR_CHAIN_ID, BOHR_RPC_URL, BOHR_EXPLORER_URL, REOWN_PROJECT_ID } from './constants';
+import { BOHR_CHAIN_ID, BOHR_RPC_URL, BOHR_EXPLORER_URL, REOWN_PROJECT_ID, APP_URL } from './constants';
 
 export const bohrTestnet = defineChain({
   id: BOHR_CHAIN_ID,
@@ -32,6 +33,7 @@ export const metadata = {
   name: 'AirdropVault',
   description: 'On-Chain Airdrop & Reward Campaign Marketplace',
   url: typeof window !== 'undefined' ? window.location.origin : 'https://airdropvault.app',
+  url: typeof window !== 'undefined' ? window.location.origin : APP_URL,
   icons: ['https://avatars.githubusercontent.com/u/179229932'],
 };
 
