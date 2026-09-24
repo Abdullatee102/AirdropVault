@@ -42,10 +42,10 @@ export function AppContent() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen w-full max-w-full overflow-x-hidden">
       <Navbar currentPage={currentPage} onNavigate={handleNavigate} />
 
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-16">
+      <main className="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 lg:px-8 pt-6 sm:pt-8 pb-16 min-w-0">
         {currentPage === 'marketplace' && (
           <MarketplacePage
             onSelectCampaign={handleSelectCampaign}

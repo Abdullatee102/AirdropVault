@@ -101,42 +101,38 @@ export const CampaignDetailPage: React.FC<CampaignDetailPageProps> = ({ campaign
   };
 
   return (
-    <div className="max-w-4xl mx-auto space-y-8">
+    <div className="max-w-4xl mx-auto space-y-6 sm:space-y-8 min-w-0">
 
       {/* Back Button */}
       <button
         onClick={onBack}
         className="inline-flex items-center gap-2 text-sm font-semibold text-slate-400 hover:text-white transition-colors"
       >
-        <ArrowLeft className="w-4 h-4" />
+        <ArrowLeft className="w-4 h-4 shrink-0" />
         <span>Back to Campaigns</span>
       </button>
 
       {/* Main Campaign Card */}
-      <div className="rounded-3xl bg-vault-card border border-vault-border p-6 sm:p-10 shadow-2xl space-y-8">
-      <div className="rounded-3xl bg-vault-card border border-vault-border p-5 sm:p-8 md:p-10 shadow-2xl space-y-6 sm:space-y-8">
+      <div className="rounded-3xl bg-vault-card border border-vault-border p-5 sm:p-8 lg:p-10 shadow-2xl space-y-6 sm:space-y-8 min-w-0">
 
         {/* Top Header */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-vault-border/60">
-          <div className="space-y-2">
-            <div className="flex items-center gap-2">
+          <div className="space-y-2 min-w-0">
             <div className="flex flex-wrap items-center gap-2">
               <CategoryBadge category={campaign.category} />
               <StatusBadge status={campaign.status ?? 1} />
               <span className="text-xs font-mono text-slate-500">ID #{campaign.campaignId.toString()}</span>
             </div>
-            <h1 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight break-words">
               {campaign.title}
             </h1>
           </div>
 
-          <div className="flex flex-col items-start sm:items-end bg-vault-dark p-4 rounded-2xl border border-vault-border/80">
-          <div className="flex sm:flex-col items-center sm:items-end justify-between bg-vault-dark p-3.5 sm:p-4 rounded-2xl border border-vault-border/80">
+          <div className="flex flex-col items-start sm:items-end bg-vault-dark p-4 rounded-2xl border border-vault-border/80 shrink-0">
             <span className="text-xs text-slate-400 font-medium">Configured Reward</span>
             <div className="flex items-center gap-1.5 mt-0.5">
-              <Flame className="w-5 h-5 text-vault-accent" />
+              <Flame className="w-5 h-5 text-vault-accent shrink-0" />
               <span className="font-mono text-2xl font-black text-white">{rewardFormatted}</span>
-              <span className="font-mono text-xl sm:text-2xl font-black text-white">{rewardFormatted}</span>
               <span className="text-xs font-bold text-vault-accent">AIR</span>
             </div>
           </div>
@@ -145,39 +141,34 @@ export const CampaignDetailPage: React.FC<CampaignDetailPageProps> = ({ campaign
         {/* Description */}
         <div className="space-y-2">
           <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">Campaign Overview</h3>
-          <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
+          <p className="text-sm sm:text-base text-slate-300 leading-relaxed break-words">
             {campaign.description}
           </p>
         </div>
 
         {/* Economic Parameters Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-5 rounded-2xl bg-vault-dark border border-vault-border/60 text-xs">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 p-4 sm:p-5 rounded-2xl bg-vault-dark border border-vault-border/60 text-xs">
-          <div className="space-y-1">
-            <span className="text-slate-500">Remaining Allocation</span>
-            <div className="font-mono text-sm font-bold text-slate-200">{remainingFormatted} AIR</div>
-            <div className="font-mono text-xs sm:text-sm font-bold text-slate-200">{remainingFormatted} AIR</div>
-            <span className="text-[10px] text-slate-500">of {totalAllocFormatted} AIR</span>
+          <div className="space-y-1 min-w-0">
+            <span className="text-slate-500 block truncate">Remaining Allocation</span>
+            <div className="font-mono text-sm font-bold text-slate-200 truncate">{remainingFormatted} AIR</div>
+            <span className="text-[10px] text-slate-500 block truncate">of {totalAllocFormatted} AIR</span>
           </div>
 
-          <div className="space-y-1">
-            <span className="text-slate-500">Participants Cap</span>
+          <div className="space-y-1 min-w-0">
+            <span className="text-slate-500 block truncate">Participants Cap</span>
             <div className="font-mono text-sm font-bold text-slate-200">{currentParts} / {maxParts}</div>
-            <div className="font-mono text-xs sm:text-sm font-bold text-slate-200">{currentParts} / {maxParts}</div>
             <span className="text-[10px] text-emerald-400 font-medium">{progressPct}% Claimed</span>
           </div>
 
-          <div className="space-y-1">
-            <span className="text-slate-500">Start Time</span>
-            <div className="font-mono text-[11px] text-slate-300 truncate">{startDate}</div>
-            <div className="font-mono text-[10px] sm:text-[11px] text-slate-300 truncate">{startDate}</div>
+          <div className="space-y-1 min-w-0">
+            <span className="text-slate-500 block truncate">Start Time</span>
+            <div className="font-mono text-[11px] text-slate-300 break-words">{startDate}</div>
             <span className="text-[10px] text-slate-500">On-Chain Verified</span>
           </div>
 
-          <div className="space-y-1">
-            <span className="text-slate-500">Claim Deadline</span>
-            <div className="font-mono text-[11px] text-slate-300 truncate">{deadlineDate}</div>
-            <div className="font-mono text-[10px] sm:text-[11px] text-slate-300 truncate">{deadlineDate}</div>
+          <div className="space-y-1 min-w-0">
+            <span className="text-slate-500 block truncate">Claim Deadline</span>
+            <div className="font-mono text-[11px] text-slate-300 break-words">{deadlineDate}</div>
             <span className="text-[10px] text-slate-500">Strict Enforcement</span>
           </div>
         </div>
@@ -197,18 +188,14 @@ export const CampaignDetailPage: React.FC<CampaignDetailPageProps> = ({ campaign
         </div>
 
         {/* User Eligibility & Claim Status Card */}
-        <div className="p-6 rounded-2xl bg-gradient-to-br from-vault-darker to-vault-dark border border-vault-borderHover/30 space-y-5">
-          <div className="flex items-center justify-between">
-        <div className="p-4 sm:p-6 rounded-2xl bg-gradient-to-br from-vault-darker to-vault-dark border border-vault-borderHover/30 space-y-4 sm:space-y-5">
-          <div className="flex items-center justify-between gap-2">
+        <div className="p-5 sm:p-6 rounded-2xl bg-gradient-to-br from-vault-darker to-vault-dark border border-vault-borderHover/30 space-y-5 min-w-0">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <h3 className="text-sm font-bold text-white flex items-center gap-2">
-              <UserCheck className="w-4 h-4 text-vault-accent" />
               <UserCheck className="w-4 h-4 text-vault-accent shrink-0" />
               <span>Your Participation Status</span>
             </h3>
             {isConnected && (
-              <span className="text-xs font-mono text-slate-400 truncate max-w-[150px]">
-              <span className="text-xs font-mono text-slate-400 truncate max-w-[120px] sm:max-w-[200px]">
+              <span className="text-xs font-mono text-slate-400 truncate max-w-full sm:max-w-[200px]">
                 {address}
               </span>
             )}
@@ -217,7 +204,9 @@ export const CampaignDetailPage: React.FC<CampaignDetailPageProps> = ({ campaign
           {!isConnected ? (
             <div className="p-4 rounded-xl bg-white/5 border border-white/10 text-center space-y-3">
               <p className="text-xs text-slate-400">Connect your wallet to check your eligibility and claim AIR rewards.</p>
-              <appkit-button />
+              <div className="flex justify-center">
+                <appkit-button balance="hide" />
+              </div>
             </div>
           ) : (
             <div className="space-y-4">
@@ -230,9 +219,9 @@ export const CampaignDetailPage: React.FC<CampaignDetailPageProps> = ({ campaign
                     : 'bg-amber-500/10 border-amber-500/30 text-amber-300'
                 }`}>
                   {hasEligibility ? <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" /> : <Clock className="w-5 h-5 text-amber-400 shrink-0" />}
-                  <div>
+                  <div className="min-w-0">
                     <div className="font-bold">{hasEligibility ? "Eligibility Verified" : "Awaiting Verification"}</div>
-                    <div className="text-[11px] opacity-80">
+                    <div className="text-[11px] opacity-80 break-words">
                       {hasEligibility ? "You are authorized to claim this campaign reward." : "Complete the task below to verify eligibility."}
                     </div>
                   </div>
@@ -245,9 +234,9 @@ export const CampaignDetailPage: React.FC<CampaignDetailPageProps> = ({ campaign
                     : 'bg-white/5 border-white/10 text-slate-300'
                 }`}>
                   {hasClaimed ? <CheckCircle2 className="w-5 h-5 text-vault-accent shrink-0" /> : <Lock className="w-5 h-5 text-slate-500 shrink-0" />}
-                  <div>
+                  <div className="min-w-0">
                     <div className="font-bold">{hasClaimed ? "Reward Claimed" : "Reward Unclaimed"}</div>
-                    <div className="text-[11px] opacity-80">
+                    <div className="text-[11px] opacity-80 break-words">
                       {hasClaimed ? "AIR tokens are in your wallet." : "Claimable once verified & active."}
                     </div>
                   </div>
@@ -255,15 +244,15 @@ export const CampaignDetailPage: React.FC<CampaignDetailPageProps> = ({ campaign
               </div>
 
               {/* Task Section */}
-              <div className="p-4 rounded-xl bg-vault-dark border border-vault-border space-y-3">
-                <div className="flex items-center justify-between">
+              <div className="p-4 rounded-xl bg-vault-dark border border-vault-border space-y-3 min-w-0">
+                <div className="flex items-center justify-between gap-2">
                   <span className="text-xs font-bold text-white">Requirement Method:</span>
-                  <span className="px-2 py-0.5 rounded bg-vault-accent/10 text-vault-accent text-[11px] font-mono">
+                  <span className="px-2 py-0.5 rounded bg-vault-accent/10 text-vault-accent text-[11px] font-mono shrink-0">
                     {campaign.verificationType}
                   </span>
                 </div>
 
-                <p className="text-xs text-slate-400 leading-relaxed">
+                <p className="text-xs text-slate-400 leading-relaxed break-words">
                   Participate in Bohr ecosystem tasks matching this campaign rule. Once completed, your wallet address is verified on-chain by authorized verifiers.
                 </p>
 
@@ -278,16 +267,16 @@ export const CampaignDetailPage: React.FC<CampaignDetailPageProps> = ({ campaign
                           : 'bg-white/10 hover:bg-white/15 text-white border border-white/10'
                       }`}
                     >
-                      <CheckCircle2 className="w-4 h-4" />
+                      <CheckCircle2 className="w-4 h-4 shrink-0" />
                       <span>{taskCompleted ? "Task Marked as Completed" : "Mark Task as Completed"}</span>
                     </button>
 
                     {isVerifier && (
                       <button
                         onClick={handleVerifierApproveSelf}
-                        className="py-2.5 px-4 rounded-xl bg-vault-purple/20 hover:bg-vault-purple/30 border border-vault-purple/40 text-vault-purple text-xs font-bold transition-all flex items-center justify-center gap-1.5"
+                        className="py-2.5 px-4 rounded-xl bg-vault-purple/20 hover:bg-vault-purple/30 border border-vault-purple/40 text-vault-purple text-xs font-bold transition-all flex items-center justify-center gap-1.5 shrink-0"
                       >
-                        <ShieldCheck className="w-4 h-4" />
+                        <ShieldCheck className="w-4 h-4 shrink-0" />
                         <span>Verifier: Authorize Wallet</span>
                       </button>
                     )}
@@ -305,10 +294,10 @@ export const CampaignDetailPage: React.FC<CampaignDetailPageProps> = ({ campaign
                     </p>
                     <button
                       onClick={() => onNavigate('convert')}
-                      className="mt-2 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-vault-accent text-vault-darker font-bold text-xs hover:opacity-90 transition-opacity"
+                      className="mt-2 inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-vault-accent text-vault-darker font-bold text-xs hover:opacity-90 transition-opacity"
                     >
                       <span>Open Conversion Vault</span>
-                      <Send className="w-3.5 h-3.5" />
+                      <Send className="w-3.5 h-3.5 shrink-0" />
                     </button>
                   </div>
                 ) : (
@@ -321,8 +310,8 @@ export const CampaignDetailPage: React.FC<CampaignDetailPageProps> = ({ campaign
                         : 'bg-white/5 text-slate-500 border border-white/5 cursor-not-allowed'
                     }`}
                   >
-                    <Sparkles className="w-4 h-4" />
-                    <span>
+                    <Sparkles className="w-4 h-4 shrink-0" />
+                    <span className="truncate">
                       {campaign.status !== CampaignStatus.ACTIVE
                         ? "Campaign Not Active"
                         : hasEligibility
@@ -337,17 +326,16 @@ export const CampaignDetailPage: React.FC<CampaignDetailPageProps> = ({ campaign
         </div>
 
         {/* Creator & Explorer Reference */}
-        <div className="pt-4 border-t border-vault-border/60 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-2">
-          <span className="font-mono">Creator: {campaign.creator}</span>
-          <span className="font-mono text-[11px] sm:text-xs truncate max-w-full sm:max-w-md">Creator: {campaign.creator}</span>
+        <div className="pt-4 border-t border-vault-border/60 flex flex-col sm:flex-row sm:items-center justify-between text-xs text-slate-500 gap-2 min-w-0">
+          <span className="font-mono truncate max-w-full">Creator: {campaign.creator}</span>
           <a
             href={`${BOHR_EXPLORER_URL}address/${AIRDROP_VAULT_ADDRESS}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-vault-accent hover:underline flex items-center gap-1"
+            className="text-vault-accent hover:underline flex items-center gap-1 shrink-0"
           >
             <span>View Contract on BohrScan</span>
-            <ExternalLink className="w-3 h-3" />
+            <ExternalLink className="w-3 h-3 shrink-0" />
           </a>
         </div>
       </div>

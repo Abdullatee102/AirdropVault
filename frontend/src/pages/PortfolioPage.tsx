@@ -62,44 +62,40 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({ onSelectCampaign, 
 
   if (!isConnected) {
     return (
-      <div className="max-w-md mx-auto py-20 text-center space-y-6">
+      <div className="max-w-md mx-auto py-16 sm:py-20 text-center space-y-6 px-4">
         <div className="w-16 h-16 rounded-3xl bg-vault-card border border-vault-border flex items-center justify-center mx-auto text-vault-accent">
           <Wallet className="w-8 h-8" />
         </div>
         <div className="space-y-2">
-          <h2 className="text-2xl font-bold text-white">Connect Your Wallet</h2>
+          <h2 className="text-xl sm:text-2xl font-bold text-white">Connect Your Wallet</h2>
           <p className="text-xs text-slate-400">Connect your Web3 wallet to view your AIR portfolio, claim history, and conversion earnings.</p>
         </div>
         <div className="flex justify-center">
-          <appkit-button />
+          <appkit-button balance="hide" />
         </div>
       </div>
     );
   }
 
   return (
-    <div className="max-w-5xl mx-auto space-y-10">
+    <div className="max-w-5xl mx-auto space-y-8 sm:space-y-10 min-w-0">
 
       {/* Portfolio Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div>
+        <div className="min-w-0">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-vault-accent/10 border border-vault-accent/30 text-vault-accent text-xs font-semibold mb-2">
-            <Wallet className="w-3.5 h-3.5" />
+            <Wallet className="w-3.5 h-3.5 shrink-0" />
             <span>My Reward Portfolio</span>
           </div>
-          <h1 className="text-3xl font-extrabold text-white tracking-tight">Your Rewards & Holdings</h1>
-          <p className="text-xs text-slate-400 font-mono mt-1">Connected: {address}</p>
           <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">Your Rewards & Holdings</h1>
           <p className="text-xs text-slate-400 font-mono mt-1 truncate max-w-full sm:max-w-md">Connected: {address}</p>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 w-full sm:w-auto">
           <button
             onClick={addAirToWallet}
-            className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-vault-accent/15 border border-vault-accent/40 text-vault-accent text-xs font-bold hover:bg-vault-accent hover:text-vault-darker transition-all"
             className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-vault-accent/15 border border-vault-accent/40 text-vault-accent text-xs font-bold hover:bg-vault-accent hover:text-vault-darker transition-all w-full sm:w-auto"
           >
-            <PlusCircle className="w-4 h-4" />
             <PlusCircle className="w-4 h-4 shrink-0" />
             <span>{addedToken ? "Added to Wallet!" : "Add AIR to MetaMask"}</span>
           </button>
@@ -107,68 +103,59 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({ onSelectCampaign, 
       </div>
 
       {/* Metrics Cards Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
 
         {/* Current AIR Balance */}
-        <div className="p-6 rounded-3xl bg-gradient-to-br from-vault-card to-vault-dark border border-vault-border space-y-3 relative overflow-hidden shadow-xl">
-        <div className="p-5 sm:p-6 rounded-3xl bg-gradient-to-br from-vault-card to-vault-dark border border-vault-border space-y-3 relative overflow-hidden shadow-xl">
+        <div className="p-5 sm:p-6 rounded-3xl bg-gradient-to-br from-vault-card to-vault-dark border border-vault-border space-y-3 relative overflow-hidden shadow-xl min-w-0">
           <div className="flex items-center justify-between">
             <span className="text-xs font-semibold text-slate-400">Current AIR Balance</span>
-            <div className="p-2 rounded-xl bg-vault-accent/10 text-vault-accent">
+            <div className="p-2 rounded-xl bg-vault-accent/10 text-vault-accent shrink-0">
               <Flame className="w-4 h-4" />
             </div>
           </div>
-          <div className="space-y-0.5">
-            <div className="text-3xl font-extrabold font-mono text-white">{airBalanceFormatted}</div>
+          <div className="space-y-0.5 min-w-0">
             <div className="text-2xl sm:text-3xl font-extrabold font-mono text-white truncate">{airBalanceFormatted}</div>
             <div className="text-[11px] text-vault-accent font-semibold">ERC-20 AIR In Wallet</div>
           </div>
         </div>
 
         {/* Total AIR Earned */}
-        <div className="p-6 rounded-3xl bg-gradient-to-br from-vault-card to-vault-dark border border-vault-border space-y-3 shadow-xl">
-        <div className="p-5 sm:p-6 rounded-3xl bg-gradient-to-br from-vault-card to-vault-dark border border-vault-border space-y-3 shadow-xl">
+        <div className="p-5 sm:p-6 rounded-3xl bg-gradient-to-br from-vault-card to-vault-dark border border-vault-border space-y-3 shadow-xl min-w-0">
           <div className="flex items-center justify-between">
             <span className="text-xs font-semibold text-slate-400">Lifetime AIR Claimed</span>
-            <div className="p-2 rounded-xl bg-emerald-500/10 text-emerald-400">
+            <div className="p-2 rounded-xl bg-emerald-500/10 text-emerald-400 shrink-0">
               <Sparkles className="w-4 h-4" />
             </div>
           </div>
-          <div className="space-y-0.5">
-            <div className="text-3xl font-extrabold font-mono text-white">{totalClaimedFormatted}</div>
+          <div className="space-y-0.5 min-w-0">
             <div className="text-2xl sm:text-3xl font-extrabold font-mono text-white truncate">{totalClaimedFormatted}</div>
             <div className="text-[11px] text-emerald-400 font-semibold">Earned from Campaigns</div>
           </div>
         </div>
 
         {/* Total AIR Converted */}
-        <div className="p-6 rounded-3xl bg-gradient-to-br from-vault-card to-vault-dark border border-vault-border space-y-3 shadow-xl">
-        <div className="p-5 sm:p-6 rounded-3xl bg-gradient-to-br from-vault-card to-vault-dark border border-vault-border space-y-3 shadow-xl">
+        <div className="p-5 sm:p-6 rounded-3xl bg-gradient-to-br from-vault-card to-vault-dark border border-vault-border space-y-3 shadow-xl min-w-0">
           <div className="flex items-center justify-between">
             <span className="text-xs font-semibold text-slate-400">Total AIR Converted</span>
-            <div className="p-2 rounded-xl bg-vault-purple/10 text-vault-purple">
+            <div className="p-2 rounded-xl bg-vault-purple/10 text-vault-purple shrink-0">
               <ArrowRightLeft className="w-4 h-4" />
             </div>
           </div>
-          <div className="space-y-0.5">
-            <div className="text-3xl font-extrabold font-mono text-white">{totalConvertedFormatted}</div>
+          <div className="space-y-0.5 min-w-0">
             <div className="text-2xl sm:text-3xl font-extrabold font-mono text-white truncate">{totalConvertedFormatted}</div>
             <div className="text-[11px] text-slate-400 font-semibold">Burned on Conversion</div>
           </div>
         </div>
 
         {/* Total Native BOT Received */}
-        <div className="p-6 rounded-3xl bg-gradient-to-br from-vault-card to-vault-dark border border-vault-border space-y-3 shadow-xl">
-        <div className="p-5 sm:p-6 rounded-3xl bg-gradient-to-br from-vault-card to-vault-dark border border-vault-border space-y-3 shadow-xl">
+        <div className="p-5 sm:p-6 rounded-3xl bg-gradient-to-br from-vault-card to-vault-dark border border-vault-border space-y-3 shadow-xl min-w-0">
           <div className="flex items-center justify-between">
             <span className="text-xs font-semibold text-slate-400">Native BOT Received</span>
-            <div className="p-2 rounded-xl bg-emerald-500/10 text-emerald-400">
+            <div className="p-2 rounded-xl bg-emerald-500/10 text-emerald-400 shrink-0">
               <Coins className="w-4 h-4" />
             </div>
           </div>
-          <div className="space-y-0.5">
-            <div className="text-3xl font-extrabold font-mono text-white">{totalBotReceivedFormatted}</div>
+          <div className="space-y-0.5 min-w-0">
             <div className="text-2xl sm:text-3xl font-extrabold font-mono text-white truncate">{totalBotReceivedFormatted}</div>
             <div className="text-[11px] text-emerald-400 font-semibold">Bohr Native Gas Asset</div>
           </div>
@@ -176,10 +163,8 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({ onSelectCampaign, 
       </div>
 
       {/* Convert Call to Action Banner */}
-      <div className="p-8 rounded-3xl bg-gradient-to-r from-vault-accent/15 via-vault-darker to-vault-purple/15 border border-vault-accent/30 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-2xl">
       <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-vault-accent/15 via-vault-darker to-vault-purple/15 border border-vault-accent/30 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-6 shadow-2xl">
         <div className="space-y-2">
-          <h3 className="text-xl font-bold text-white">Convert Your AIR into Native BOT</h3>
           <h3 className="text-lg sm:text-xl font-bold text-white">Convert Your AIR into Native BOT</h3>
           <p className="text-xs text-slate-300 max-w-xl leading-relaxed">
             Eligible AIR can be converted into Bohr Testnet native BOT at the protocol rate of 1,000 AIR → 0.1 BOT. Converted AIR is burned and BOT is transferred directly to your wallet.
@@ -188,11 +173,10 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({ onSelectCampaign, 
 
         <button
           onClick={() => onNavigate('convert')}
-          className="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-vault-accent to-vault-purple text-vault-darker font-bold text-xs hover:opacity-90 transition-all flex items-center gap-2 whitespace-nowrap shadow-lg shadow-vault-accent/20"
-          className="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-vault-accent to-vault-purple text-vault-darker font-bold text-xs hover:opacity-90 transition-all flex items-center justify-center gap-2 whitespace-nowrap shadow-lg shadow-vault-accent/20 w-full sm:w-auto"
+          className="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-vault-accent to-vault-purple text-vault-darker font-bold text-xs hover:opacity-90 transition-all flex items-center justify-center gap-2 whitespace-nowrap shadow-lg shadow-vault-accent/20 w-full sm:w-auto shrink-0"
         >
           <span>Open Conversion Vault</span>
-          <Send className="w-4 h-4" />
+          <Send className="w-4 h-4 shrink-0" />
         </button>
       </div>
 

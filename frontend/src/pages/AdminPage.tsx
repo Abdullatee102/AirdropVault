@@ -211,28 +211,28 @@ export const AdminPage: React.FC = () => {
 
   if (!isConnected) {
     return (
-      <div className="max-w-md mx-auto py-20 text-center space-y-4">
+      <div className="max-w-md mx-auto py-16 sm:py-20 text-center space-y-4 px-4">
         <ShieldCheck className="w-12 h-12 text-vault-accent mx-auto" />
         <h2 className="text-xl font-bold text-white">Connect Authorized Wallet</h2>
         <p className="text-xs text-slate-400">Connect a wallet possessing administrative or operational roles on AirdropVault.</p>
         <div className="flex justify-center pt-2">
-          <appkit-button />
+          <appkit-button balance="hide" />
         </div>
       </div>
     );
   }
 
   return (
-    <div className="max-w-5xl mx-auto space-y-8">
+    <div className="max-w-5xl mx-auto space-y-6 sm:space-y-8 min-w-0">
 
       {/* Admin Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-start lg:items-center justify-between gap-4">
         <div>
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-vault-accent/10 border border-vault-accent/30 text-vault-accent text-xs font-semibold mb-2">
-            <ShieldCheck className="w-3.5 h-3.5" />
+            <ShieldCheck className="w-3.5 h-3.5 shrink-0" />
             <span>Protocol Operations</span>
           </div>
-          <h1 className="text-3xl font-extrabold text-white tracking-tight">AirdropVault Management</h1>
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">AirdropVault Management</h1>
           <p className="text-xs text-slate-400 font-mono mt-1">Role-bounded smart contract configuration</p>
         </div>
 
@@ -247,64 +247,62 @@ export const AdminPage: React.FC = () => {
       </div>
 
       {/* Admin Tab Navigation */}
-      <div className="flex items-center gap-2 border-b border-vault-border pb-3 overflow-x-auto scrollbar-none">
-      <div className="flex items-center gap-2 border-b border-vault-border pb-3 overflow-x-auto scrollbar-none -mx-4 px-4 sm:mx-0 sm:px-0">
+      <div className="flex items-center gap-2 border-b border-vault-border pb-3 overflow-x-auto scrollbar-none -mx-2 px-2 sm:mx-0 sm:px-0">
         <button
           onClick={() => setActiveTab('create')}
-          className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 whitespace-nowrap ${
-          className={`px-3.5 sm:px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 whitespace-nowrap ${
+          className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 whitespace-nowrap shrink-0 ${
             activeTab === 'create'
               ? 'bg-vault-accent text-vault-darker shadow-md shadow-vault-accent/20'
               : 'bg-vault-card border border-vault-border text-slate-300 hover:text-white'
           }`}
         >
-          <PlusCircle className="w-4 h-4" />
+          <PlusCircle className="w-4 h-4 shrink-0" />
           <span>Create Campaign</span>
         </button>
 
         <button
           onClick={() => setActiveTab('eligibility')}
-          className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 whitespace-nowrap ${
+          className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 whitespace-nowrap shrink-0 ${
             activeTab === 'eligibility'
               ? 'bg-vault-accent text-vault-darker shadow-md shadow-vault-accent/20'
               : 'bg-vault-card border border-vault-border text-slate-300 hover:text-white'
           }`}
         >
-          <UserCheck className="w-4 h-4" />
+          <UserCheck className="w-4 h-4 shrink-0" />
           <span>Authorize Eligibility</span>
         </button>
 
         <button
           onClick={() => setActiveTab('treasury')}
-          className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 whitespace-nowrap ${
+          className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 whitespace-nowrap shrink-0 ${
             activeTab === 'treasury'
               ? 'bg-vault-accent text-vault-darker shadow-md shadow-vault-accent/20'
               : 'bg-vault-card border border-vault-border text-slate-300 hover:text-white'
           }`}
         >
-          <Coins className="w-4 h-4" />
+          <Coins className="w-4 h-4 shrink-0" />
           <span>Treasury & Rates</span>
         </button>
 
         <button
           onClick={() => setActiveTab('emergency')}
-          className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 whitespace-nowrap ${
+          className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 whitespace-nowrap shrink-0 ${
             activeTab === 'emergency'
               ? 'bg-red-500 text-white shadow-md shadow-red-500/20'
               : 'bg-vault-card border border-vault-border text-slate-300 hover:text-white'
           }`}
         >
-          <AlertTriangle className="w-4 h-4" />
+          <AlertTriangle className="w-4 h-4 shrink-0" />
           <span>Emergency Controls</span>
         </button>
       </div>
 
       {/* Tab 1: Create Campaign Wizard */}
       {activeTab === 'create' && (
-        <div className="rounded-3xl bg-vault-card border border-vault-border p-6 sm:p-8 space-y-6">
+        <div className="rounded-3xl bg-vault-card border border-vault-border p-5 sm:p-8 space-y-6 min-w-0">
           <div>
             <h3 className="text-lg font-bold text-white flex items-center gap-2">
-              <PlusCircle className="w-5 h-5 text-vault-accent" />
+              <PlusCircle className="w-5 h-5 text-vault-accent shrink-0" />
               <span>Create New Campaign</span>
             </h3>
             <p className="text-xs text-slate-400 mt-1">
@@ -424,7 +422,7 @@ export const AdminPage: React.FC = () => {
                   : 'bg-white/5 text-slate-500 cursor-not-allowed'
               }`}
             >
-              <PlusCircle className="w-4 h-4" />
+              <PlusCircle className="w-4 h-4 shrink-0" />
               <span>{isCampaignManager ? "Deploy Campaign to Bohr Testnet" : "Requires CAMPAIGN_MANAGER_ROLE"}</span>
             </button>
           </form>
@@ -433,12 +431,12 @@ export const AdminPage: React.FC = () => {
 
       {/* Tab 2: Eligibility Verification */}
       {activeTab === 'eligibility' && (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 min-w-0">
 
           {/* Single User Approval */}
-          <div className="rounded-3xl bg-vault-card border border-vault-border p-6 space-y-4">
+          <div className="rounded-3xl bg-vault-card border border-vault-border p-5 sm:p-6 space-y-4 min-w-0">
             <h3 className="text-sm font-bold text-white flex items-center gap-2">
-              <UserCheck className="w-4 h-4 text-vault-accent" />
+              <UserCheck className="w-4 h-4 text-vault-accent shrink-0" />
               <span>Single User Approval</span>
             </h3>
 
@@ -478,9 +476,9 @@ export const AdminPage: React.FC = () => {
           </div>
 
           {/* Batch Approval */}
-          <div className="rounded-3xl bg-vault-card border border-vault-border p-6 space-y-4">
+          <div className="rounded-3xl bg-vault-card border border-vault-border p-5 sm:p-6 space-y-4 min-w-0">
             <h3 className="text-sm font-bold text-white flex items-center gap-2">
-              <UserCheck className="w-4 h-4 text-vault-purple" />
+              <UserCheck className="w-4 h-4 text-vault-purple shrink-0" />
               <span>Batch User Approval</span>
             </h3>
 
@@ -523,12 +521,12 @@ export const AdminPage: React.FC = () => {
 
       {/* Tab 3: Treasury & Rate Management */}
       {activeTab === 'treasury' && (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 min-w-0">
 
           {/* Deposit BOT */}
-          <div className="rounded-3xl bg-vault-card border border-vault-border p-6 space-y-4">
+          <div className="rounded-3xl bg-vault-card border border-vault-border p-5 sm:p-6 space-y-4 min-w-0">
             <h3 className="text-sm font-bold text-white flex items-center gap-2">
-              <Coins className="w-4 h-4 text-emerald-400" />
+              <Coins className="w-4 h-4 text-emerald-400 shrink-0" />
               <span>Fund BOT Conversion Pool</span>
             </h3>
             <p className="text-xs text-slate-400">
@@ -559,9 +557,9 @@ export const AdminPage: React.FC = () => {
           </div>
 
           {/* Update Rate & Limits */}
-          <div className="rounded-3xl bg-vault-card border border-vault-border p-6 space-y-4">
+          <div className="rounded-3xl bg-vault-card border border-vault-border p-5 sm:p-6 space-y-4 min-w-0">
             <h3 className="text-sm font-bold text-white flex items-center gap-2">
-              <Settings className="w-4 h-4 text-vault-accent" />
+              <Settings className="w-4 h-4 text-vault-accent shrink-0" />
               <span>Configure Rate & Limits</span>
             </h3>
 
@@ -633,19 +631,16 @@ export const AdminPage: React.FC = () => {
 
       {/* Tab 4: Emergency Controls & Campaign Toggles */}
       {activeTab === 'emergency' && (
-        <div className="space-y-6">
+        <div className="space-y-6 min-w-0">
 
           {/* Global Pause Protocol */}
-          <div className={`p-6 rounded-3xl border space-y-4 ${
           <div className={`p-5 sm:p-6 rounded-3xl border space-y-4 ${
             isPaused
               ? 'bg-red-500/10 border-red-500/40 text-red-300'
               : 'bg-vault-card border-vault-border text-slate-300'
           }`}>
-            <div className="flex items-center justify-between">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div className="flex items-center gap-3">
-                <AlertTriangle className={`w-6 h-6 ${isPaused ? 'text-red-400' : 'text-amber-400'}`} />
                 <AlertTriangle className={`w-6 h-6 shrink-0 ${isPaused ? 'text-red-400' : 'text-amber-400'}`} />
                 <div>
                   <h3 className="text-base font-bold text-white">Emergency Protocol Pause</h3>
@@ -660,8 +655,7 @@ export const AdminPage: React.FC = () => {
               <button
                 onClick={handleToggleEmergencyPause}
                 disabled={!isPauser}
-                className={`px-5 py-2.5 rounded-xl font-bold text-xs shadow-lg transition-all ${
-                className={`px-5 py-2.5 rounded-xl font-bold text-xs shadow-lg transition-all w-full sm:w-auto ${
+                className={`px-5 py-2.5 rounded-xl font-bold text-xs shadow-lg transition-all w-full sm:w-auto shrink-0 ${
                   isPaused
                     ? 'bg-emerald-500 text-vault-darker hover:opacity-90'
                     : 'bg-red-500 text-white hover:opacity-90'
@@ -673,26 +667,23 @@ export const AdminPage: React.FC = () => {
           </div>
 
           {/* Individual Campaign Lifecycle Controls */}
-          <div className="rounded-3xl bg-vault-card border border-vault-border p-6 space-y-4">
-          <div className="rounded-3xl bg-vault-card border border-vault-border p-5 sm:p-6 space-y-4">
+          <div className="rounded-3xl bg-vault-card border border-vault-border p-5 sm:p-6 space-y-4 min-w-0">
             <h3 className="text-base font-bold text-white">Manage Active Campaigns</h3>
             <div className="divide-y divide-vault-border/60">
               {campaigns.map((c) => (
-                <div key={c.campaignId.toString()} className="py-3 flex items-center justify-between text-xs">
-                <div key={c.campaignId.toString()} className="py-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-4 text-xs">
-                  <div>
-                    <span className="font-bold text-white">#{c.campaignId.toString()} - {c.title}</span>
+                <div key={c.campaignId.toString()} className="py-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+                  <div className="min-w-0">
+                    <span className="font-bold text-white block sm:inline break-words">#{c.campaignId.toString()} - {c.title}</span>
                     <div className="text-[11px] text-slate-400">
                       Remaining: {Number(formatUnits(c.remainingAllocation, 18)).toLocaleString()} AIR
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2 shrink-0">
                     {c.isPaused ? (
                       <button
                         onClick={() => handleCampaignAction('unpause', c.campaignId)}
                         className="px-3 py-1.5 rounded-lg bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 font-bold hover:bg-emerald-500 hover:text-vault-darker"
-                        className="flex-1 sm:flex-none px-3 py-1.5 rounded-lg bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 font-bold hover:bg-emerald-500 hover:text-vault-darker transition-colors"
                       >
                         Unpause
                       </button>
@@ -700,7 +691,6 @@ export const AdminPage: React.FC = () => {
                       <button
                         onClick={() => handleCampaignAction('pause', c.campaignId)}
                         className="px-3 py-1.5 rounded-lg bg-amber-500/15 border border-amber-500/30 text-amber-400 font-bold hover:bg-amber-500 hover:text-vault-darker"
-                        className="flex-1 sm:flex-none px-3 py-1.5 rounded-lg bg-amber-500/15 border border-amber-500/30 text-amber-400 font-bold hover:bg-amber-500 hover:text-vault-darker transition-colors"
                       >
                         Pause
                       </button>
@@ -710,7 +700,6 @@ export const AdminPage: React.FC = () => {
                       <button
                         onClick={() => handleCampaignAction('cancel', c.campaignId)}
                         className="px-3 py-1.5 rounded-lg bg-red-500/15 border border-red-500/30 text-red-400 font-bold hover:bg-red-500 hover:text-white"
-                        className="flex-1 sm:flex-none px-3 py-1.5 rounded-lg bg-red-500/15 border border-red-500/30 text-red-400 font-bold hover:bg-red-500 hover:text-white transition-colors"
                       >
                         Cancel
                       </button>

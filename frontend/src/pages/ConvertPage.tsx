@@ -96,7 +96,6 @@ export const ConvertPage: React.FC<ConvertPageProps> = ({ onNavigate }) => {
   };
 
   const handleSetMax = () => {
-    // Max convertible is minimum of userAirBalance and currentlyConvertibleAIR
     const maxUsable = userAirBalance < currentlyConvertibleAIR ? userAirBalance : currentlyConvertibleAIR;
     const finalAmount = maxUsable > maxConversionAIR ? maxConversionAIR : maxUsable;
     setAirInput(formatUnits(finalAmount, 18));
@@ -108,15 +107,15 @@ export const ConvertPage: React.FC<ConvertPageProps> = ({ onNavigate }) => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto space-y-8">
+    <div className="max-w-2xl mx-auto space-y-6 sm:space-y-8 min-w-0">
 
       {/* Page Title & Intro */}
-      <div className="text-center space-y-3">
+      <div className="text-center space-y-2 sm:space-y-3">
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-vault-accent/10 border border-vault-accent/30 text-vault-accent text-xs font-semibold">
-          <ArrowRightLeft className="w-3.5 h-3.5" />
+          <ArrowRightLeft className="w-3.5 h-3.5 shrink-0" />
           <span>Real On-Chain Conversion Engine</span>
         </div>
-        <h1 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+        <h1 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight break-words">
           Convert <span className="text-vault-accent">AIR</span> → Native <span className="text-emerald-400">BOT</span>
         </h1>
         <p className="text-xs sm:text-sm text-slate-300 max-w-lg mx-auto leading-relaxed">
@@ -125,10 +124,8 @@ export const ConvertPage: React.FC<ConvertPageProps> = ({ onNavigate }) => {
       </div>
 
       {/* Protocol Conversion Rate Banner */}
-      <div className="p-4 rounded-2xl bg-gradient-to-r from-vault-card to-vault-dark border border-vault-border flex flex-col sm:flex-row items-center justify-between gap-4 text-xs shadow-lg">
       <div className="p-4 rounded-2xl bg-gradient-to-r from-vault-card to-vault-dark border border-vault-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 text-xs shadow-lg">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-vault-accent/15 border border-vault-accent/30 flex items-center justify-center">
           <div className="w-10 h-10 rounded-xl bg-vault-accent/15 border border-vault-accent/30 flex items-center justify-center shrink-0">
             <Coins className="w-5 h-5 text-vault-accent" />
           </div>
@@ -138,7 +135,6 @@ export const ConvertPage: React.FC<ConvertPageProps> = ({ onNavigate }) => {
           </div>
         </div>
 
-        <div className="text-right sm:border-l sm:border-vault-border sm:pl-4">
         <div className="w-full sm:w-auto text-left sm:text-right border-t sm:border-t-0 sm:border-l border-vault-border pt-2 sm:pt-0 sm:pl-4">
           <span className="text-slate-400 font-medium">Current BOT Liquidity</span>
           <div className="text-sm font-bold text-emerald-400 font-mono">{poolBotFormatted} BOT</div>
@@ -146,8 +142,7 @@ export const ConvertPage: React.FC<ConvertPageProps> = ({ onNavigate }) => {
       </div>
 
       {/* Main Conversion Card */}
-      <div className="rounded-3xl bg-vault-card border border-vault-border p-6 sm:p-8 shadow-2xl space-y-6 relative overflow-hidden">
-      <div className="rounded-3xl bg-vault-card border border-vault-border p-5 sm:p-8 shadow-2xl space-y-6 relative overflow-hidden">
+      <div className="rounded-3xl bg-vault-card border border-vault-border p-5 sm:p-8 shadow-2xl space-y-5 sm:space-y-6 relative overflow-hidden">
 
         {/* Background glow */}
         <div className="absolute top-0 right-0 w-64 h-64 bg-vault-accent/5 rounded-full blur-3xl pointer-events-none" />
@@ -178,20 +173,18 @@ export const ConvertPage: React.FC<ConvertPageProps> = ({ onNavigate }) => {
               onChange={(e) => setAirInput(e.target.value)}
               placeholder="0.0"
               disabled={isZeroLiquidity || isPaused}
-              className="w-full py-4 pl-4 pr-24 rounded-2xl bg-vault-dark border border-vault-border text-lg sm:text-2xl font-mono font-bold text-white placeholder-slate-600 focus:outline-none focus:border-vault-accent/60 transition-colors disabled:opacity-50"
               className="w-full py-3.5 sm:py-4 pl-3.5 sm:pl-4 pr-20 sm:pr-24 rounded-2xl bg-vault-dark border border-vault-border text-base sm:text-2xl font-mono font-bold text-white placeholder-slate-600 focus:outline-none focus:border-vault-accent/60 transition-colors disabled:opacity-50"
             />
-            <div className="absolute right-3.5 top-1/2 -translate-y-1/2 flex items-center gap-2 px-3 py-1.5 rounded-xl bg-vault-card border border-vault-border text-xs font-bold text-vault-accent font-mono">
             <div className="absolute right-2.5 sm:right-3.5 top-1/2 -translate-y-1/2 flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-xl bg-vault-card border border-vault-border text-xs font-bold text-vault-accent font-mono">
-              <Flame className="w-4 h-4 text-vault-accent" />
+              <Flame className="w-4 h-4 text-vault-accent shrink-0" />
               <span>AIR</span>
             </div>
           </div>
         </div>
 
         {/* Arrow Divider */}
-        <div className="flex justify-center -my-2 relative z-10">
-          <div className="w-10 h-10 rounded-full bg-vault-dark border border-vault-borderHover flex items-center justify-center text-vault-accent shadow-md">
+        <div className="flex justify-center -my-1 sm:-my-2 relative z-10">
+          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-vault-dark border border-vault-borderHover flex items-center justify-center text-vault-accent shadow-md">
             <ArrowDown className="w-4 h-4 animate-bounce" />
           </div>
         </div>
@@ -200,8 +193,7 @@ export const ConvertPage: React.FC<ConvertPageProps> = ({ onNavigate }) => {
         <div className="space-y-2">
           <div className="flex items-center justify-between text-xs text-slate-400">
             <span className="font-semibold text-white">You Receive (Native BOT)</span>
-            <span>Direct to your connected wallet</span>
-            <span className="hidden sm:inline">Direct to your wallet</span>
+            <span className="hidden sm:inline">Direct to your connected wallet</span>
           </div>
 
           <div className="relative">
@@ -210,12 +202,10 @@ export const ConvertPage: React.FC<ConvertPageProps> = ({ onNavigate }) => {
               readOnly
               value={botOutput}
               placeholder="0.0"
-              className="w-full py-4 pl-4 pr-24 rounded-2xl bg-vault-dark/60 border border-vault-border text-lg sm:text-2xl font-mono font-bold text-emerald-400 placeholder-slate-600 focus:outline-none cursor-default"
               className="w-full py-3.5 sm:py-4 pl-3.5 sm:pl-4 pr-20 sm:pr-24 rounded-2xl bg-vault-dark/60 border border-vault-border text-base sm:text-2xl font-mono font-bold text-emerald-400 placeholder-slate-600 focus:outline-none cursor-default"
             />
-            <div className="absolute right-3.5 top-1/2 -translate-y-1/2 flex items-center gap-2 px-3 py-1.5 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-xs font-bold text-emerald-400 font-mono">
             <div className="absolute right-2.5 sm:right-3.5 top-1/2 -translate-y-1/2 flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-xs font-bold text-emerald-400 font-mono">
-              <Coins className="w-4 h-4" />
+              <Coins className="w-4 h-4 shrink-0" />
               <span>BOT</span>
             </div>
           </div>
@@ -292,20 +282,20 @@ export const ConvertPage: React.FC<ConvertPageProps> = ({ onNavigate }) => {
         {/* Action Button */}
         {!isConnected ? (
           <div className="text-center pt-2">
-            <appkit-button />
+            <appkit-button balance="hide" />
           </div>
         ) : (
           <button
             onClick={handleConvert}
             disabled={!isValidInput}
-            className={`w-full py-4 px-6 rounded-2xl font-bold text-sm flex items-center justify-center gap-2 shadow-xl transition-all ${
+            className={`w-full py-3.5 sm:py-4 px-4 sm:px-6 rounded-2xl font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-xl transition-all ${
               isValidInput
                 ? 'bg-gradient-to-r from-vault-accent via-cyan-400 to-emerald-400 text-vault-darker hover:opacity-95 shadow-vault-accent/20 cursor-pointer scale-[1.01]'
                 : 'bg-white/5 text-slate-500 border border-white/5 cursor-not-allowed'
             }`}
           >
-            <ArrowRightLeft className="w-4 h-4" />
-            <span>
+            <ArrowRightLeft className="w-4 h-4 shrink-0" />
+            <span className="truncate">
               {isZeroLiquidity
                 ? "Conversion Unavailable (Empty Pool)"
                 : isBelowMin
@@ -330,9 +320,9 @@ export const ConvertPage: React.FC<ConvertPageProps> = ({ onNavigate }) => {
       </div>
 
       {/* Conversion Flow Explainer */}
-      <div className="rounded-3xl bg-vault-card border border-vault-border p-6 space-y-4 text-xs">
+      <div className="rounded-3xl bg-vault-card border border-vault-border p-5 sm:p-6 space-y-4 text-xs">
         <h3 className="text-sm font-bold text-white flex items-center gap-2">
-          <ShieldCheck className="w-4 h-4 text-emerald-400" />
+          <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
           <span>How Conversion Works (Atomic & Secure)</span>
         </h3>
         <ol className="list-decimal list-inside space-y-2 text-slate-300 leading-relaxed">

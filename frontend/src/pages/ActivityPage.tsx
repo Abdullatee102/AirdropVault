@@ -62,22 +62,22 @@ export const ActivityPage: React.FC = () => {
   ];
 
   return (
-    <div className="max-w-4xl mx-auto space-y-8">
+    <div className="max-w-4xl mx-auto space-y-6 sm:space-y-8 min-w-0">
 
       {/* Page Title */}
       <div className="space-y-2">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-vault-accent/10 border border-vault-accent/30 text-vault-accent text-xs font-semibold">
-          <Activity className="w-3.5 h-3.5" />
+          <Activity className="w-3.5 h-3.5 shrink-0" />
           <span>Real On-Chain Activity Feed</span>
         </div>
-        <h1 className="text-3xl font-extrabold text-white tracking-tight">Protocol & User Activity</h1>
+        <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">Protocol & User Activity</h1>
         <p className="text-xs text-slate-400">
           All claims, conversions, pool funding, and campaign creations verified on Bohr Testnet.
         </p>
       </div>
 
       {/* Events List */}
-      <div className="rounded-3xl bg-vault-card border border-vault-border divide-y divide-vault-border/60 overflow-hidden shadow-2xl">
+      <div className="rounded-3xl bg-vault-card border border-vault-border divide-y divide-vault-border/60 overflow-hidden shadow-2xl min-w-0">
         {events.map((event) => {
           const isDeposit = event.type === 'DEPOSIT';
           const isConvert = event.type === 'CONVERT';
@@ -86,10 +86,10 @@ export const ActivityPage: React.FC = () => {
           return (
             <div
               key={event.id}
-              className="p-5 sm:p-6 hover:bg-vault-cardHover transition-colors flex flex-col sm:flex-row sm:items-center justify-between gap-4"
+              className="p-4 sm:p-6 hover:bg-vault-cardHover transition-colors flex flex-col sm:flex-row sm:items-center justify-between gap-4 min-w-0"
             >
-              <div className="flex items-center gap-4">
-                <div className={`w-11 h-11 rounded-2xl flex items-center justify-center shrink-0 ${
+              <div className="flex items-start sm:items-center gap-3 sm:gap-4 min-w-0">
+                <div className={`w-10 h-10 sm:w-11 sm:h-11 rounded-2xl flex items-center justify-center shrink-0 ${
                   isDeposit ? 'bg-emerald-500/15 text-emerald-400 border border-emerald-500/30' :
                   isConvert ? 'bg-vault-purple/15 text-vault-purple border border-vault-purple/30' :
                   isClaim ? 'bg-vault-accent/15 text-vault-accent border border-vault-accent/30' :
@@ -101,17 +101,17 @@ export const ActivityPage: React.FC = () => {
                   {!isDeposit && !isConvert && !isClaim && <PlusCircle className="w-5 h-5" />}
                 </div>
 
-                <div className="space-y-1">
-                  <div className="flex items-center gap-2">
-                    <h4 className="text-sm font-bold text-white">{event.title}</h4>
-                    <span className="px-2 py-0.5 rounded bg-white/5 border border-white/10 text-[10px] font-mono text-slate-300">
+                <div className="space-y-1 min-w-0">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <h4 className="text-sm font-bold text-white break-words">{event.title}</h4>
+                    <span className="px-2 py-0.5 rounded bg-white/5 border border-white/10 text-[10px] font-mono text-slate-300 shrink-0">
                       {event.type}
                     </span>
                   </div>
-                  <div className="flex items-center gap-3 text-xs text-slate-400 font-mono">
-                    <span className="truncate max-w-[140px] sm:max-w-[200px]">By: {event.account}</span>
-                    <span className="text-slate-600">•</span>
-                    <span className="text-slate-500 flex items-center gap-1">
+                  <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-xs text-slate-400 font-mono">
+                    <span className="truncate max-w-[130px] sm:max-w-[200px]">By: {event.account}</span>
+                    <span className="text-slate-600 hidden sm:inline">•</span>
+                    <span className="text-slate-500 flex items-center gap-1 shrink-0">
                       <Clock className="w-3 h-3" />
                       {new Date(event.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                     </span>
@@ -119,7 +119,7 @@ export const ActivityPage: React.FC = () => {
                 </div>
               </div>
 
-              <div className="flex sm:flex-col items-center sm:items-end justify-between gap-2">
+              <div className="flex sm:flex-col items-center sm:items-end justify-between gap-2 shrink-0 pt-2 sm:pt-0 border-t sm:border-t-0 border-vault-border/40">
                 {event.amount && (
                   <span className={`font-mono text-sm font-bold ${
                     isDeposit ? 'text-emerald-400' : 'text-vault-accent'

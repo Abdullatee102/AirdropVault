@@ -43,7 +43,7 @@ export const Footer: React.FC = () => {
           {/* Brand & Purpose */}
           <div className="md:col-span-2 space-y-3">
             <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-vault-accent to-vault-purple flex items-center justify-center">
+              <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-vault-accent to-vault-purple flex items-center justify-center shrink-0">
                 <Coins className="w-4 h-4 text-vault-darker" />
               </div>
               <span className="text-lg font-black tracking-tight text-white font-mono">Airdrop<span className="text-vault-accent">Vault</span></span>
@@ -53,29 +53,28 @@ export const Footer: React.FC = () => {
             </p>
             <div className="flex flex-wrap gap-2 pt-1">
               <span className="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-[11px] text-slate-300 inline-flex items-center gap-1.5">
-                <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
                 One-Contract Unified Architecture
               </span>
               <span className="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-[11px] text-slate-300 inline-flex items-center gap-1.5">
-                <Cpu className="w-3.5 h-3.5 text-vault-accent" />
+                <Cpu className="w-3.5 h-3.5 text-vault-accent shrink-0" />
                 Mint-On-Claim Economics
               </span>
             </div>
           </div>
 
           {/* Unified Contract Info */}
-          <div className="space-y-3">
+          <div className="space-y-3 min-w-0">
             <h4 className="text-xs font-bold uppercase tracking-wider text-slate-300">Contract & Token</h4>
             <div className="space-y-2">
-              <div className="p-2.5 rounded-xl bg-vault-dark border border-vault-border text-xs">
+              <div className="p-2.5 rounded-xl bg-vault-dark border border-vault-border text-xs min-w-0">
                 <div className="flex items-center justify-between text-slate-400 text-[10px] mb-1">
                   <span>AirdropVault CA (AIR Token)</span>
                   <button onClick={copyAddress} className="hover:text-vault-accent transition-colors">
                     {copied ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
                   </button>
                 </div>
-                <div className="font-mono text-slate-200 text-[11px] truncate">
-                <div className="font-mono text-slate-200 text-[11px] sm:text-xs break-all select-all">
+                <div className="font-mono text-slate-200 text-[11px] truncate select-all">
                   {AIRDROP_VAULT_ADDRESS}
                 </div>
               </div>
@@ -85,7 +84,7 @@ export const Footer: React.FC = () => {
                   onClick={addAirToWallet}
                   className="flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg bg-vault-accent/10 border border-vault-accent/30 hover:bg-vault-accent/20 text-vault-accent text-xs font-medium transition-all"
                 >
-                  <PlusCircle className="w-3.5 h-3.5" />
+                  <PlusCircle className="w-3.5 h-3.5 shrink-0" />
                   <span>{addedToken ? "Added!" : "Import AIR Token"}</span>
                 </button>
 
@@ -93,7 +92,6 @@ export const Footer: React.FC = () => {
                   href={`${BOHR_EXPLORER_URL}address/${AIRDROP_VAULT_ADDRESS}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-lg bg-vault-dark border border-vault-border hover:border-vault-accent/40 text-slate-400 hover:text-white transition-colors"
                   className="p-2 rounded-lg bg-vault-dark border border-vault-border hover:border-vault-accent/40 text-slate-400 hover:text-white transition-colors shrink-0"
                   title="View on BohrScan"
                 >
@@ -128,7 +126,6 @@ export const Footer: React.FC = () => {
 
         </div>
 
-        <div className="pt-8 border-t border-vault-border/60 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
         <div className="pt-8 border-t border-vault-border/60 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4 text-center sm:text-left">
           <p>© 2026 AirdropVault. Real On-Chain Reward Campaigns & Conversion Pool.</p>
           <div className="flex items-center gap-4">
